@@ -1,5 +1,5 @@
 
-import AppHeader from './appheader'
+import AppHeader from '../../common/components/appheader'
 import SideBar from './sidebar'
 import SortingTabs from './sortingtabs'
 import QuestionListing from './questionlisting'

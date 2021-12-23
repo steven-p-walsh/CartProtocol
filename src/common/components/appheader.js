@@ -20,16 +20,8 @@ const user = {
 }
 
 const navigation = [
-  { name: 'Dashboard', href: '#' },
-  { name: 'Jobs', href: '#' },
-  { name: 'Applicants', href: '#' },
-  { name: 'Company', href: '#' },
-]
-
-const breadcrumbs = [
-  { name: 'Jobs', href: '#', current: false },
-  { name: 'Front End Developer', href: '#', current: false },
-  { name: 'Applicants', href: '#', current: true },
+  { name: 'My Watchlist', href: '#' },
+  { name: 'Browse Ideas', href: '#' }
 ]
 
 const userNavigation = [
