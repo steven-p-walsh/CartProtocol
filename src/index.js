@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
 import './index.css';
-import App from './App';
+import Landing from './home/components/landing';
 import reportWebVitals from './reportWebVitals';
+import PageLayout from './market/components/pagelayout';
+import IdeaDetailPage from './idea/components/ideadetailpage';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Landing />} />
+				<Route path="/market" element={ <PageLayout /> } >
+				</Route>
+				<Route path="/idea" element={ <IdeaDetailPage /> } >
+				</Route>
+			</Routes>
+		</BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
