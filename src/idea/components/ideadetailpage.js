@@ -1,6 +1,6 @@
 
 import Timeline from './timeline'
-import AppHeader from '../../common/components/appheader'
+import AppHeader from './appheader'
 import IdeaSubheader from './ideasubheader'
 import IdeaDetails from './ideadetails'
 import Comments from './comments'

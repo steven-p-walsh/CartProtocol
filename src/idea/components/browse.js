@@ -1,5 +1,5 @@
 
-import AppHeader from '../../common/components/appheader'
+import AppHeader from './appheader'
 import SideBar from './sidebar'
 import SortingTabs from './sortingtabs'
 import QuestionListing from './questionlisting'
@@ -8,7 +8,7 @@ import WhoToFollow from './whotofollow'
 import Footer from '../../app/components/footer'
 
 
-export default function PageLayout() {
+export default function BrowseLayout() {
   return (
     <>
       <div className="min-h-full bg-gray-100">

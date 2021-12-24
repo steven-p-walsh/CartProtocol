@@ -10,18 +10,17 @@ import {
 import './index.css';
 import Landing from './home/components/landing';
 import reportWebVitals from './reportWebVitals';
-import PageLayout from './market/components/pagelayout';
+import BrowseLayout from './idea/components/browse';
 import IdeaDetailPage from './idea/components/ideadetailpage';
-
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Landing />} />
-				<Route path="/market" element={ <PageLayout /> } >
+				<Route path="/ideas/" element={ <BrowseLayout /> } >
 				</Route>
-				<Route path="/idea" element={ <IdeaDetailPage /> } >
+				<Route path="/ideas/:ideaid" element={ <IdeaDetailPage /> } >
 				</Route>
 			</Routes>
 		</BrowserRouter>
