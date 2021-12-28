@@ -8,20 +8,19 @@ export default function IdeaSubheader() {
 					<div className="relative">
 						<img
 							className="h-16 w-16 rounded-full"
-							src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+							src=""
 							alt=""
 						/>
 						<span className="absolute inset-0 shadow-inner rounded-full" aria-hidden="true" />
 					</div>
 				</div>
 				<div>
-					<h1 className="text-2xl font-bold text-gray-900">Ricardo Cooper</h1>
+					<h1 className="text-2xl font-bold text-gray-900">Name</h1>
 					<p className="text-sm font-medium text-gray-500">
-						Applied for{' '}
 						<a href="#" className="text-gray-900">
-							Front End Developer
+							subtitle
 						</a>{' '}
-						on <time dateTime="2020-08-25">August 25, 2020</time>
+						on <time dateTime="2020-08-25">Date</time>
 					</p>
 				</div>
 			</div>
@@ -30,13 +29,13 @@ export default function IdeaSubheader() {
 					type="button"
 					className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
 				>
-					Disqualify
+					Action 1
 				</button>
 				<button
 					type="button"
 					className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
 				>
-					Advance to offer
+					Action 2
 				</button>
 			</div>
 		</div>

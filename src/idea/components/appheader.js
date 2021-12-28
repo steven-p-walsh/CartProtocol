@@ -11,6 +11,7 @@ import {
   UserIcon,
 } from '@heroicons/react/solid'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Link } from 'react-router-dom'
 
 const user = {
   name: 'Whitney Francis',
@@ -20,8 +21,8 @@ const user = {
 }
 
 const navigation = [
-  { name: 'My Watchlist', href: '#' },
-  { name: 'Browse Ideas', href: '#' }
+  { name: 'My Watchlist', href: '/watchlist' },
+  { name: 'Browse Ideas', href: '/ideas' }
 ]
 
 const userNavigation = [
@@ -53,9 +54,12 @@ export default function AppHeader() {
 					</div>
 					<nav aria-label="Global" className="hidden lg:ml-6 lg:flex lg:items-center lg:space-x-4">
 						{navigation.map((item) => (
-							<a key={item.name} href={item.href} className="px-3 py-2 text-gray-900 text-sm font-medium">
-								{item.name}
-							</a>
+							<Link 
+								to={{ pathname: item.href}} 
+								className="px-3 py-2 text-gray-900 text-sm font-medium"
+							>
+								{ item.name }
+							</Link>
 						))}
 					</nav>
 				</div>

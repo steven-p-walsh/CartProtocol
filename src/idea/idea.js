@@ -1,22 +1,16 @@
-import { makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 
 export default class Idea {
 	
 	constructor() {
-		makeObservable(this,{
-			name: observable,
-			category: observable,
-			description: observable,
-			ownerid: observable,
-			contractDetails: observable
-		});
+		makeAutoObservable(this);
 	}
 
 	name;
 	category;
 	description;
 	ownerid;
-	contractDetails;
+	contractdetails;
 
 }

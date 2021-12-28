@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import AppHeader from './appheader'
 import SideBar from './sidebar'
@@ -7,10 +7,20 @@ import Trending from './trending'
 import WhoToFollow from './whotofollow'
 import Footer from '../../app/components/footer'
 import IdeaListing from './idealisting';
+import { useRootStore } from '../../app/rootstore';
 
 
 const BrowseLayout = observer((props) => {
-  return (
+
+	const store = useRootStore();
+	
+	// fetch the inital listings based on defaults
+	useEffect(async () => {
+		document.title = "Cart Protocol | Browse Ideas"
+		await store.ideaStore.fetchListings();
+	},[]);
+
+	return (
     <>
       <div className="min-h-full bg-gray-100">
         <AppHeader/>

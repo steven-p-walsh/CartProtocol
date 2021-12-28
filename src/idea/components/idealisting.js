@@ -1,5 +1,6 @@
 
 import { observer } from 'mobx-react-lite'
+import { useRootStore } from '../../app/rootstore';
 import IdeaMediaObject from './ideamediaobject';
 
 const questions = [
@@ -26,17 +27,24 @@ const questions = [
 ]
 
 const IdeaListing = (props) => {
-	
+	const { ideaStore } = useRootStore();
+	const listings = ideaStore.sortedListings;
+	debugger;
 	return (
 		<div className="mt-4">
 			<h1 className="sr-only">Recent questions</h1>
-			<ul role="list" className="space-y-4">
-				{questions.map((question) => (
-					<li key={question.id} className="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
-						<IdeaMediaObject idea={ question } />
-					</li>
-				))}
-			</ul>
+			{
+				ideaStore.browseListings.isLoaded ?
+				<ul role="list" className="space-y-4">
+					{
+						listings.map((idea) =>
+							<li className="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
+								<IdeaMediaObject idea={ idea } />
+							</li>
+						)
+					}
+				</ul> : <span>Loading Listings</span>
+			}
 		</div>
 	);
 }
