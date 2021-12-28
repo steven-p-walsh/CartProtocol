@@ -1,15 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import {
-  ShareIcon,
-  ThumbUpIcon,
-} from '@heroicons/react/solid'
 import { Link } from 'react-router-dom';
-
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
 
 const IdeaMediaObject = (props) => {
 
@@ -29,10 +19,13 @@ const IdeaMediaObject = (props) => {
 							</a>
 						</p>
 						<p className="text-sm text-gray-500">
-							<a href="#" className="hover:underline">
-								<time dateTime={idea.datetime}>{idea.datetime}</time>
-							</a>
+							<span>Auction Threshold: 45%</span>
 						</p>
+						<div className="min-w-1 flex-0">
+							<div className="w-full bg-gray-200 h-1">
+								<div className="bg-blue-400 h-1" style={{width: '45%'}}></div>
+							</div>
+						</div>
 					</div>
 					
 				</div>

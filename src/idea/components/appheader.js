@@ -1,17 +1,13 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import {
-  ArrowNarrowLeftIcon,
-  CheckIcon,
-  HomeIcon,
-  PaperClipIcon,
-  QuestionMarkCircleIcon,
-  SearchIcon,
-  ThumbUpIcon,
-  UserIcon,
+  SearchIcon
 } from '@heroicons/react/solid'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import SubmitIdeaForm from './submitideaform'
+import Drawer from '../../core/drawer'
 
 const user = {
   name: 'Whitney Francis',
@@ -21,8 +17,9 @@ const user = {
 }
 
 const navigation = [
-  { name: 'My Watchlist', href: '/watchlist' },
-  { name: 'Browse Ideas', href: '/ideas' }
+  { name: 'My Watchlist', href: '/watchlist', type: 'anchor' },
+	{ name: 'Browse Ideas', href: '/ideas', type: 'anchor' },
+	{ name: 'Submit Idea', href: '', type: 'drawer', formbody: SubmitIdeaForm },
 ]
 
 const userNavigation = [
@@ -35,7 +32,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function AppHeader() {
+const AppHeader = () => {
 
 	return (
 	
@@ -53,14 +50,19 @@ export default function AppHeader() {
 						</a>
 					</div>
 					<nav aria-label="Global" className="hidden lg:ml-6 lg:flex lg:items-center lg:space-x-4">
-						{navigation.map((item) => (
-							<Link 
-								to={{ pathname: item.href}} 
-								className="px-3 py-2 text-gray-900 text-sm font-medium"
-							>
-								{ item.name }
-							</Link>
-						))}
+						{
+							navigation.map((item) => (
+								item.type == 'anchor' ?
+								<Link 
+									to={{ pathname: item.href}} 
+									className="px-3 py-2 text-gray-900 text-sm font-medium"
+								>
+									{ item.name }
+								</Link> 
+								:
+								<Drawer formbody={ item.formbody } buttonText={ item.name } />
+							))
+						}
 					</nav>
 				</div>
 				<div className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
@@ -135,13 +137,13 @@ export default function AppHeader() {
 										</div>
 										<div className="mt-3 px-2 space-y-1">
 											{navigation.map((item) => (
-												<a
-													key={item.name}
-													href={item.href}
+												item.type == 'anchor' ? <Link 
+													to={{ pathname: item.href}} 
 													className="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800"
 												>
-													{item.name}
-												</a>
+													{ item.name }
+												</Link> :
+												<Drawer formbody={ item.formbody } buttonText={ item.name } />
 											))}
 										</div>
 									</div>
@@ -227,8 +229,10 @@ export default function AppHeader() {
 				</div>
 			</Popover>
 		</div>
-
 	</header>
 
 	);
 }
+
+
+export default observer(AppHeader);
