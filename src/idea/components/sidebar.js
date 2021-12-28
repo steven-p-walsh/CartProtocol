@@ -1,28 +1,23 @@
-import { BellIcon, FireIcon, HomeIcon, MenuIcon, TrendingUpIcon, UserGroupIcon, XIcon } from '@heroicons/react/outline'
+import { observer } from 'mobx-react-lite';
+import { 
+	FireIcon, 
+	TrendingUpIcon, 
+	UserGroupIcon
+} from '@heroicons/react/outline'
+import { useRootStore } from '../../app/rootstore';
 
 const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: true },
   { name: 'Popular', href: '#', icon: FireIcon, current: false },
-  { name: 'Communities', href: '#', icon: UserGroupIcon, current: false },
+  { name: 'Close to Threshold', href: '#', icon: UserGroupIcon, current: false },
   { name: 'Trending', href: '#', icon: TrendingUpIcon, current: false },
-]
-
-const communities = [
-  { name: 'Movies', href: '#' },
-  { name: 'Food', href: '#' },
-  { name: 'Sports', href: '#' },
-  { name: 'Animals', href: '#' },
-  { name: 'Science', href: '#' },
-  { name: 'Dinosaurs', href: '#' },
-  { name: 'Talents', href: '#' },
-  { name: 'Gaming', href: '#' },
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function SideBar() {
+const SideBar = observer(() => {
+	const store = useRootStore();
 	return (
 		<div className="hidden lg:block lg:col-span-3 xl:col-span-2">
 		<nav aria-label="Sidebar" className="sticky top-4 divide-y divide-gray-300">
@@ -53,16 +48,16 @@ export default function SideBar() {
 					className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider"
 					id="communities-headline"
 				>
-					My communities
+					Categories
 				</p>
 				<div className="mt-3 space-y-2" aria-labelledby="communities-headline">
-					{communities.map((community) => (
+					{store.ideaStore.categories.map((category) => (
 						<a
-							key={community.name}
-							href={community.href}
+							key={category.name}
+							href="#"
 							className="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50"
 						>
-							<span className="truncate">{community.name}</span>
+							<span className="truncate">{category.name}</span>
 						</a>
 					))}
 				</div>
@@ -70,4 +65,6 @@ export default function SideBar() {
 		</nav>
 		</div>
 	)
-}
+});
+
+export default SideBar;

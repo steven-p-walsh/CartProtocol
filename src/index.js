@@ -12,18 +12,23 @@ import Landing from './home/components/landing';
 import reportWebVitals from './reportWebVitals';
 import BrowseLayout from './idea/components/browse';
 import IdeaDetailPage from './idea/components/ideadetailpage';
+import { RootContextProvider, RootStore } from './app/rootstore';
+
+const rootStore = new RootStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Landing />} />
-				<Route path="/ideas/" element={ <BrowseLayout /> } >
-				</Route>
-				<Route path="/ideas/:ideaid" element={ <IdeaDetailPage /> } >
-				</Route>
-			</Routes>
-		</BrowserRouter>
+		<RootContextProvider store={ rootStore } >
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Landing />} />
+					<Route path="/ideas/" element={ <BrowseLayout /> } >
+					</Route>
+					<Route path="/ideas/:ideaid" element={ <IdeaDetailPage /> } >
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</RootContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
